@@ -1,4 +1,4 @@
-import { getNews, getPlace, getArrive, getMap, getRumor, getStatistic } from '../../../services/common';
+import { getNews, getPlace, getArrive, getRumor, getStatistic } from '../../../services/common';
 import { message } from 'antd';
 export default {
   namespace: 'Home',
@@ -64,24 +64,24 @@ export default {
       }
     },
 
-    *getMap({ payload }, { call, put }) {
-      const res = yield call(getMap, payload);
-      if (res.code === 200) {
-        let data = res.newslist;
-        data.forEach(item => {
-          item['name'] = item.provinceName;
-          item['value'] = item.currentConfirmedCount;
-        });
-        yield put({
-          type: 'updateState',
-          payload: {
-            mapList: data
-          }
-        })
-      } else {
-        message.error(res.msg);
-      }
-    },
+    // *getMap({ payload }, { call, put }) {
+    //   const res = yield call(getMap, payload);
+    //   if (res.code === 200) {
+    //     let data = res.newslist;
+    //     data.forEach(item => {
+    //       item['name'] = item.provinceName;
+    //       item['value'] = item.currentConfirmedCount;
+    //     });
+    //     yield put({
+    //       type: 'updateState',
+    //       payload: {
+    //         mapList: data
+    //       }
+    //     })
+    //   } else {
+    //     message.error(res.msg);
+    //   }
+    // },
 
     *getRumor({ payload }, { call, put }) {
       const res = yield call(getRumor, payload);

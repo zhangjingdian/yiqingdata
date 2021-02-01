@@ -2,7 +2,8 @@
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
-  publicPath: '/yiqi/',
+  publicPath: '/yiqingdata/yiqing/',
+  base: '/yiqingdata/yiqing/',
   hash: true,
   routes: [
     {
@@ -35,6 +36,7 @@ export default {
         ],
       },
     }],
+    'umi-plugin-gh-pages',
   ],
   proxy: {
     '/api': {

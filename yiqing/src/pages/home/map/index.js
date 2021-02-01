@@ -50,6 +50,9 @@ function Map({ dispatch, Home }) {
           }
         }]
     };
+    myChart.on('click', function (params) {
+      console.log(params);
+    })
     myChart.setOption(option);
   }, [data])
   const getList = useCallback(() => {
@@ -67,7 +70,7 @@ function Map({ dispatch, Home }) {
     }).then(() => {
       init();
     })
-  }, [init])
+  }, [init]);
   useEffect(() => {
     getList();
   }, [getList])

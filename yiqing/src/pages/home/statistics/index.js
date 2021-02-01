@@ -1,6 +1,17 @@
 import { connect } from 'dva';
 import { Card, Statistic, Row, Col } from 'antd';
 import { useEffect } from 'react';
+import {
+  Player, ControlBar,
+  PlayToggle, // PlayToggle 播放/暂停按钮 若需禁止加 disabled
+  ReplayControl, // 后退按钮
+  ForwardControl,  // 前进按钮
+  CurrentTimeDisplay,
+  TimeDivider,
+  PlaybackRateMenuButton,  // 倍速播放选项
+  VolumeMenuButton
+} from 'video-react';
+import "../../../../node_modules/video-react/dist/video-react.css";
 
 function Statistics({ dispatch, Home }) {
   useEffect(() => {
@@ -48,6 +59,26 @@ function Statistics({ dispatch, Home }) {
             </Col>
           </Row>
         }
+      </Card>
+      <Card title="视频播放" style={{ width: '100%', marginTop: 20 }}>
+        <Player
+          playsInline
+          fluid={false}
+          height={600}
+          width={'100%'}
+          // poster="/assets/poster.png"
+          src="https://ycalvod.yicai.com/vms-new/2020/03/f9cc9e14-6381-4ced-a093-411193dce2f9.mp4?auth_key=1612184631-0-0-1ae871bc7593b989b87a73d55d3f2fab&ycfrom=yicaiwww"
+        >
+          <ControlBar autoHide={false} disableDefaultControls={false}>
+            <ReplayControl seconds={10} order={1.1} />
+            <ForwardControl seconds={30} order={1.2} />
+            <PlayToggle />
+            <CurrentTimeDisplay order={4.1} />
+            <TimeDivider order={4.2} />
+            <PlaybackRateMenuButton rates={[5, 2, 1.5, 1, 0.5]} order={7.1} />
+            <VolumeMenuButton />
+          </ControlBar>
+        </Player>
       </Card>
     </div>
   )
